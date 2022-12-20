@@ -28,3 +28,13 @@ content-type: application/json
 {
   "email":"hello@world.com"
 }
+
+### Log in with an email and password
+
+POST http://localhost:3000/auth/signin
+content-type: application/json
+
+{
+  "email":"test@test.com",
+  "password":"password"
+}

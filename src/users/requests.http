@@ -4,7 +4,7 @@ POST http://localhost:3000/auth/signup
 content-type: application/json
 
 {
-  "email":"test@test.com",
+  "email":"test@pepe.com",
   "password":"password"
 }
 
@@ -35,6 +35,15 @@ POST http://localhost:3000/auth/signin
 content-type: application/json
 
 {
-  "email":"test@test.com",
+  "email":"test@pepe.com",
   "password":"password"
 }
+
+### Get the current signed in user
+
+GET http://localhost:3000/auth/whoami
+
+### Sign out
+
+POST http://localhost:3000/auth/signout
+content-type: application/json

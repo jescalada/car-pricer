@@ -1,6 +1,5 @@
 import {
   Body,
-  ClassSerializerInterceptor,
   Controller,
   Delete,
   Get,
@@ -9,9 +8,8 @@ import {
   Param,
   Query,
   Post,
-  UseInterceptors,
 } from '@nestjs/common';
-import { SerializeInterceptor } from 'src/interceptors/serialize.interceptor';
+import { Serialize } from 'src/interceptors/serialize.interceptor';
 import { CreateUserDto } from './dtos/create-user.dto';
 import { UpdateUserDto } from './dtos/update-user.dto';
 import { UserDto } from './dtos/user-dto';
@@ -26,9 +24,8 @@ export class UsersController {
     this.usersService.create(body.email, body.password);
   }
 
-  // This interceptor allows us to filter the password field from the user
-  // (using Exclude() decorator in the entity class)
-  @UseInterceptors(new SerializeInterceptor(UserDto))
+  // Serialize is our custom interceptor, better than just using Class Serializer Interceptor
+  @Serialize(UserDto)
   @Get(':id')
   async findUser(@Param('id') id: string) {
     const user = await this.usersService.findOne(parseInt(id));

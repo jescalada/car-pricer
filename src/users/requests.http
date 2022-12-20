@@ -19,3 +19,12 @@ GET http://localhost:3000/auth/?email=hullo@world.com
 ### Delete a user with a given ID
 
 DELETE http://localhost:3000/auth/1
+
+### Update a user with a given ID
+
+PATCH http://localhost:3000/auth/2
+content-type: application/json
+
+{
+  "email":"hello@world.com"
+}

@@ -16,6 +16,9 @@ import { UserDto } from './dtos/user-dto';
 import { UsersService } from './users.service';
 
 @Controller('auth')
+// Serialize is our custom interceptor, better than just using Class Serializer Interceptor
+// Another custom DTO can be used for admin routes (in order to show extra parameters)
+@Serialize(UserDto)
 export class UsersController {
   constructor(private usersService: UsersService) {}
 
@@ -24,8 +27,6 @@ export class UsersController {
     this.usersService.create(body.email, body.password);
   }
 
-  // Serialize is our custom interceptor, better than just using Class Serializer Interceptor
-  @Serialize(UserDto)
   @Get(':id')
   async findUser(@Param('id') id: string) {
     const user = await this.usersService.findOne(parseInt(id));

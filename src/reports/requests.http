@@ -1,0 +1,37 @@
+### Log in with an email and password
+
+POST http://localhost:3000/auth/signin
+content-type: application/json
+
+{
+  "email":"test@test.com",
+  "password":"password"
+}
+
+### Post a report after logging in
+
+POST http://localhost:3000/reports
+Content-Type: application/json
+
+{
+  "make": "ford",
+  "model": "mustang",
+  "year": 1981,
+  "mileage": 8000,
+  "lng": 12,
+  "lat": 10,
+  "price": 6000
+}
+
+### Approve an existing report
+
+PATCH http://localhost:3000/reports/5
+Content-Type: application/json
+
+{
+  "approved": true
+}
+
+### Get an estimate for an existing vehicle
+
+GET http://localhost:3000/reports/?make=toyota&model=corolla&lng=9&lat=8&mileage=15000&year=1978

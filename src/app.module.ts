@@ -24,7 +24,7 @@ var cookieSession = require('cookie-session');
       ssl: {
         rejectUnauthorized: false,
       },
-      synchronize: true,
+      synchronize: Boolean(process.env.SYNC_DATABASE),
     }),
     UsersModule,
     ReportsModule,

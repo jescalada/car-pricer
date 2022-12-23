@@ -16,7 +16,13 @@ describe('AuthService', () => {
         return Promise.resolve(filteredUsers);
       },
       create: (email: string, password: string) => {
-        const user = { id: Math.ceil(Math.random() * 999999), email, password };
+        const user = {
+          id: Math.ceil(Math.random() * 999999),
+          email,
+          password,
+          admin: false,
+          reports: [],
+        };
         users.push(user);
         return Promise.resolve(user);
       },

@@ -17,6 +17,8 @@ describe('UsersController', () => {
           id,
           email: 'testuser@test.com',
           password: 'testpass',
+          admin: false,
+          reports: [],
         });
       },
       find: (email: string) => {
@@ -25,6 +27,8 @@ describe('UsersController', () => {
             id: 1,
             email,
             password: 'testpass',
+            admin: false,
+            reports: [],
           },
         ]);
       },
@@ -34,7 +38,13 @@ describe('UsersController', () => {
     };
     fakeAuthService = {
       signin: (email: string, password: string) => {
-        return Promise.resolve({ id: 1, email, password });
+        return Promise.resolve({
+          id: 1,
+          email,
+          password,
+          admin: false,
+          reports: [],
+        });
       },
       // signup: () => {},
     };
